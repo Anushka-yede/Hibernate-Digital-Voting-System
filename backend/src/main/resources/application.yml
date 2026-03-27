@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: secure-voting-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/secure_voting?options=-c%20TimeZone%3DUTC}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        "[format_sql]": true
+        jdbc:
+          "[batch_size]": 25
+        "[order_inserts]": true
+        "[order_updates]": true
+        "[generate_statistics]": false
+  cache:
+    type: simple
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+jwt:
+  secret: ${JWT_SECRET:VGhpc0lzQVNlY3VyZVZvdGluZ0pXVFNlY3JldEtleUZvckRlbW9QdXJwb3NlczEyMzQ=}
+  expiration-ms: ${JWT_EXPIRATION_MS:3600000}
+  refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000}
+
+app:
+  ws:
+    allowed-origins: ${WS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:5174,http://localhost:3000}
+  rate-limit:
+    vote:
+      requests: ${VOTE_RATE_LIMIT_REQUESTS:6}
+      window-seconds: ${VOTE_RATE_LIMIT_WINDOW_SECONDS:60}
+
+blockchain:
+  rpc-url: ${ETH_RPC_URL:http://127.0.0.1:7545}
+  private-key: ${ETH_PRIVATE_KEY:}
+  contract-address: ${ETH_CONTRACT_ADDRESS:}
+
+ai:
+  service-url: ${AI_SERVICE_URL:http://localhost:8000}
+
+logging:
+  level:
+    root: INFO
+    "[com.securevote.backend]": DEBUG

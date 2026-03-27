@@ -1,0 +1,25 @@
+# Java
+backend/target/
+backend/.mvn/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+blockchain/node_modules/
+
+# Python
+ai-service/.venv/
+ai-service/__pycache__/
+ai-service/**/*.pyc
+
+# Env files
+**/.env
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
