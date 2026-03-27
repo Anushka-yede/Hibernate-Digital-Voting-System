@@ -22,7 +22,8 @@ if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
 }
 
 if (-not (Get-Command mvn -ErrorAction SilentlyContinue)) {
-    throw "Maven is not installed or not available on PATH."
+    throw "Maven is not installed or not available on PATH
+    .........."
 }
 
 if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
